@@ -6,6 +6,7 @@ import store from './store'
 import 'normalize.css'
 import './assets/icons/index'
 import './styles/index.styl' // main css
+import './veeValidate'
 
 import {
   Swiper as SwiperClass,
