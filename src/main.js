@@ -2,7 +2,9 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import { Toast } from 'vant'
 
+import './permission' // permission control
 import 'normalize.css'
 import './assets/icons/index'
 import './styles/index.styl' // main css
@@ -20,6 +22,8 @@ Vue.use(getAwesomeSwiper(SwiperClass))
 import 'swiper/swiper-bundle.css'
 
 Vue.config.productionTip = false
+
+Vue.use(Toast)
 
 new Vue({
   router,

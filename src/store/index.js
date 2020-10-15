@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 // getters
+import getters from '@/store/getters'
+
 import app from '@/store/modules/app'
 import login from '@/store/modules/login'
 import cuisines from '@/store/modules/cuisines'
@@ -14,5 +16,6 @@ export default new Vuex.Store({
     app,
     login,
     cuisines
-  }
+  },
+  getters
 })

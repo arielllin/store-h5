@@ -13,9 +13,9 @@ app.post('/login', function(req, res) {
   global.username = username || 'guest'
   if (password === '123456') {
     res.json({
-      username,
+      // username,
       token: 'rx237482jjqqa',
-      userId: 'OMGGG'
+      userId: username
     })
   } else {
     res.status(401).send('Authentication failed')

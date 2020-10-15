@@ -1,11 +1,11 @@
 <template>
-  <swiper class="swiper mg-t mg-b" :options="swiperOption">
+  <swiper class="swiper" :options="swiperOption">
     <swiper-slide
       v-for="(item, index) in banners"
       :key="index"
     >
       <div
-        class="image big"
+        class="image"
         :style="{ backgroundImage: `url(${item})` }"
       />
     </swiper-slide>

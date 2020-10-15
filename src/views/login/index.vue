@@ -1,9 +1,6 @@
 <template>
   <div class="login">
-    <div class="header">
-      <svg-icon class="icon back" icon-class="back_block" @click="changePwdType()" />
-      <div class="header-title">Sign in</div>
-    </div>
+    <Header :title="'Sign in'" @onClickBack="onClickBack" />
     <div class="login-content">
       <div class="login-content-text">
         <div class="main">Welcome to</div>
@@ -55,21 +52,24 @@
         </ValidationObserver>
 
         <div class="or">OR</div>
-        <div class="facebook">
-          <svg-icon class="icon facebook-svg" icon-class="facebook" @click="changePwdType()" />
-          <div class="text">CONNECT WITH FACEBOOK</div>
-        </div>
+        <ConnectBotton :name="'CONNECT WITH FACEBOOK'" :svg="'facebook'" :color="'#395998'" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import Header from '@/components/Header'
+import ConnectBotton from '@/components/ConnectBotton'
+
 import { mapActions, mapGetters } from 'vuex'
 import { ValidationProvider, ValidationObserver } from 'vee-validate'
 
 export default {
+  name: 'Login',
   components: {
+    Header,
+    ConnectBotton,
     ValidationProvider,
     ValidationObserver
   },
@@ -91,19 +91,18 @@ export default {
     }
   },
   methods: {
-    ...mapActions({
-      PostLogin: 'PostLogin',
-      ShowUsername: 'ShowUsername'
-    }),
-    close() {
-      this.$router.push('/')
+    ...mapActions('login', [
+      'PostLogin'
+    ]),
+    onClickBack() {
+      this.$router.replace('/')
     },
     changePwdType() {
       this.pwdShow = !this.pwdShow
     },
     async Login() {
       await this.PostLogin({ username: this.username, password: this.password })
-      await this.ShowUsername
+      // await this.ShowUsername
       this.loginStatus && this.$router.push(decodeURIComponent(this.$route.query.redirect || '/'))
     }
   }
@@ -111,18 +110,9 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.header
-  height 44px
-  display flex
-  align-items center
-  &-title
-    margin 0 auto
-  .back
-    margin-left 28px
-
 .login
   &-content
-    padding 30px 20px 0
+    padding 74px 20px 0
     &-text
       .main
         font-size 34px
@@ -160,30 +150,16 @@ export default {
           &:focus
             outline none
 
+.icon
+  position absolute
+  font-size 20px
+
 .or
   color #000
   opacity 0.6
   width 100%
   text-align center
   padding 23px 0 31px 0
-
-.facebook
-  background-color #395998
-  width 100%
-  height 48px
-  border-radius 8px
-  color #fff
-  display flex
-  align-items center
-  font-size 12px
-  .text
-    margin 0 auto
-  .facebook-svg
-    margin-left 16px
-
-.icon
-  position absolute
-  font-size 20px
 
 .eye
   top 15px

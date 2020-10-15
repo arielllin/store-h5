@@ -8,5 +8,7 @@ export const cookieKeys = {
 
 // 不用登入的白名單
 export const whiteList = [
-  '/home'
+  '/home',
+  '/login',
+  '/profile'
 ]

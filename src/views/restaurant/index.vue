@@ -1,6 +1,6 @@
 <template>
   <div class="restaurant">
-    <MainInfo :restaurant="restaurant" :banners="firstSwiper" />
+    <MainInfo :restaurant="restaurant" :banners="firstSwiper" @onClickBack="onClickBack" />
 
     <MenuWrap :title="'Featured Items'">
       <SwiperForMenu :restaurants="restaurants.slice(0, 5)" />
@@ -33,9 +33,9 @@
 </template>
 
 <script>
-import MainInfo from './components/MainInfo'
+import MainInfo from './components/MainInfo/index'
 import MenuWrap from './components/MenuWrap'
-import SwiperForMenu from './components/SwiperForMenu'
+import SwiperForMenu from './components/SwiperForMenu/index'
 import LeftPicRightContent from '@/components/LeftPicRightContent'
 
 import { mapActions, mapState } from 'vuex'
@@ -62,14 +62,17 @@ export default {
     }
   },
   created() {
-    this.GetSingleRestaurant()
+    this.GetSingleRestaurant(this.$route.query.Id)
     this.GetRestaurants()
   },
   methods: {
     ...mapActions('cuisines', [
       'GetSingleRestaurant',
       'GetRestaurants'
-    ])
+    ]),
+    onClickBack() {
+      this.$router.back(-1)
+    }
   }
 }
 </script>
