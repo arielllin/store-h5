@@ -10,5 +10,9 @@ export const cookieKeys = {
 export const whiteList = [
   '/home',
   '/login',
-  '/profile'
+  '/profile',
+  '/search',
+  '/orders',
+  '/restaurants',
+  '/restaurant'
 ]

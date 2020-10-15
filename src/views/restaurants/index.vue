@@ -1,6 +1,6 @@
 <template>
   <div clsss="restaurants">
-    <Header :title="$route.query.type" @onClickBack="onClickBack" />
+    <Header :title="$route.query.type || 'restaurants'" @onClickBack="onClickBack" />
     <div class="restaurants-content">
       <SwiperForRestaurant
         v-for="(item, index) in restaurants.slice(0,20)"
