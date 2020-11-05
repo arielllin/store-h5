@@ -1,11 +1,11 @@
 export default {
   path: '/',
   component: () => import(/* webpackChunkName: 'layout' */ '@/views/layout'),
-  redirect: 'home',
+  redirect: 'search',
   children: [
     {
       name: 'Search',
-      path: '/search',
+      path: 'search',
       component: () => import(/* webpackChunkName: 'search' */ '@/views/search')
     }
   ]

@@ -17,12 +17,13 @@ import {
 } from '@/utils/auth'
 
 const login = {
+  namespaced: true,
   state: {
-    loginStatus: (getLoginStatus() === 'true'),
+    loginStatus: getLoginStatus() === 'true',
     token: getToken(),
-    userId: getUserId(),
-    username: '訪客',
-    nickName: ''
+    userId: getUserId() || 'GUEST',
+    username: 'GUEST',
+    userAvatar: require(`@/assets/images/profile/azjm9-rfkrb.png`)
     // expireIn: getExpireIn(),
     // doRefresh: false
     // errorCount: null
@@ -80,11 +81,12 @@ const login = {
         setToken(data.token)
         setLoginStatus(true)
         setUserId(data.userId)
+        console.log('data', data)
         // setExpireIn(expireIn)
         return data
       } catch (error) {
-        alert(error)
-        throw error
+        console.warn(error)
+        return error
       }
     },
     async PostLogOut({ commit, dispatch, state }) {
@@ -93,12 +95,6 @@ const login = {
         commit('SET_LOGIN_STATUS', false)
         commit('SET_TOKEN', '')
         commit('SET_USER_ID', '')
-        commit('SET_SPORT_WALLET', '')
-        commit('SET_GAMING_WALLET', '')
-        commit('SET_CARD_WALLET', '')
-        commit('SET_TOTAL_WALLET', '')
-        commit('SET_USER_NAME', '訪客')
-        commit('SET_USER_NICKNAME', '')
         removeLoginStatus()
         removeToken()
         removeUserId()
@@ -122,7 +118,6 @@ const login = {
     LogOut({ commit, dispatch, state }) {
       commit('SET_LOGIN_STATUS', false)
       commit('SET_TOKEN', '')
-      commit('SET_USER_NAME', '訪客')
     }
   }
 }

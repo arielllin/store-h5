@@ -21,12 +21,12 @@ export function getRestaurants() {
   })
 }
 
-export function getSingleRestaurant() {
+export function getSingleRestaurant(Id) {
   return request({
     url: '/api/v2.1/restaurant',
     method: 'GET',
     params: {
-      res_id: 16774318
+      res_id: Id
     }
   })
 }

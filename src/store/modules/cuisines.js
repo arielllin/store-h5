@@ -43,9 +43,9 @@ const cuisines = {
         throw error
       }
     },
-    async GetSingleRestaurant({ commit }) {
+    async GetSingleRestaurant({ commit }, Id) {
       try {
-        const restaurant = await getSingleRestaurant().toPromise()
+        const restaurant = await getSingleRestaurant(Id).toPromise()
         commit('SET_SINGLE_RESTAURANT', restaurant)
         console.log('restaurant', restaurant)
       } catch (error) {

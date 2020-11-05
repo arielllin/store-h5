@@ -1,11 +1,11 @@
 export default {
   path: '/',
   component: () => import(/* webpackChunkName: 'layout' */ '@/views/layout'),
-  redirect: 'home',
+  redirect: 'orders',
   children: [
     {
       name: 'Orders',
-      path: '/orders',
+      path: 'orders',
       component: () => import(/* webpackChunkName: 'order' */ '@/views/orders')
     }
   ]

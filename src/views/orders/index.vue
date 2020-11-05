@@ -1,9 +1,24 @@
 <template>
   <div class="orders">
-    <div class="orders-title">
+    <!-- <div class="orders-title">
       Your Orders
-    </div>
-    <ContentClearWrap class="table" :title="'UPCOMING ORDERS'">
+    </div> -->
+    <LandingPage login-status>
+      <div v-if="!loginStatus">
+        <div class="title">Please login</div>
+        <div class="content">
+          Easily find your type of food craving and you’ll get delivery in wide range.
+        </div>
+      </div>
+
+      <div v-else>
+        <div class="title">Choose your food</div>
+        <div class="content">
+          Easily find your type of food craving and you’ll get delivery in wide range.
+        </div>
+      </div>
+    </LandingPage>
+    <!-- <ContentClearWrap class="table" :title="'UPCOMING ORDERS'">
       <div class="item-wrap">
         <LeftPicRightContent
           v-for="(item, index) in restaurants.slice(0,3)"
@@ -23,23 +38,26 @@
           class="item"
         />
       </div>
-    </ContentClearWrap>
+    </ContentClearWrap> -->
   </div>
 </template>
 
 <script>
-import ContentClearWrap from '@/components/ContentClearWrap'
-import LeftPicRightContent from '@/components/LeftPicRightContent'
+// import ContentClearWrap from '@/components/ContentClearWrap'
+// import LeftPicRightContent from '@/components/LeftPicRightContent'
+import LandingPage from './components/LandingPage'
 
-import { mapActions, mapState } from 'vuex'
+import { mapGetters, mapActions, mapState } from 'vuex'
 
 export default {
   name: 'Search',
   components: {
-    ContentClearWrap,
-    LeftPicRightContent
+    // ContentClearWrap,
+    // LeftPicRightContent
+    LandingPage
   },
   computed: {
+    ...mapGetters(['loginStatus']),
     ...mapState('cuisines', [
       'restaurants'
     ])
@@ -75,4 +93,19 @@ export default {
 
 .item
   margin-top 20px
+
+.title
+  font-size 30px
+  color #000
+  letter-spacing 0.32px
+  line-height 38px
+  text-align center
+.content
+  padding-top 24px
+  font-size 16px
+  color #000
+  letter-spacing -0.4px
+  line-height 24px
+  opacity 0.6
+  text-align center
 </style>

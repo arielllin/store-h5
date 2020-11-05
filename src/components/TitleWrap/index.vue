@@ -4,7 +4,7 @@
       <div class="text">
         {{ title }}
       </div>
-      <div class="more">See All</div>
+      <div class="more" @click="onClickSeeAll">See All</div>
     </div>
     <slot />
   </div>
@@ -17,6 +17,12 @@ export default {
     title: {
       type: String,
       default: ''
+    }
+  },
+  methods: {
+    onClickSeeAll() {
+      console.log('hoii')
+      this.$emit('onClickSeeAll', this.title)
     }
   }
 }
