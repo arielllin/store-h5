@@ -18,7 +18,7 @@ To clone and run this application, you'll need [Git](https://git-scm.com) and [N
 $ git clone https://github.com/arielllin/store-h5.git
 
 # Go into the repository
-$ cd music-player
+$ cd store-h5
 
 # Checkout a branch
 $ git checkout dev
