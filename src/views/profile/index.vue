@@ -60,7 +60,7 @@ export default {
     flex-direction column
     align-items center
     .avatar
-      padding-top 130px
+      padding-top 60px
       width 90px
       img
         width 100%
